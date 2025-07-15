@@ -1,12 +1,12 @@
 <?php require_once __DIR__ . '/layout/header.php'; ?>
 <?php require_once __DIR__ . '/layout/sidebar.php'; ?>
-<div class="d-flex justify-content-between align-items-center">
+<div class=" w-100 d-flex justify-content-center align-items-center flex-column">
   <h2>Welcome, <?= $_SESSION['user']['email'] ?? 'Admin' ?> 👋</h2>
 
-  <div class="card mt-4">
+  <div class="card mt-4 text-center">
     <div class="card-body">
-      <h5 class="card-title">User Tools</h5>
-      <p class="card-text">This is your user dashboard. You can add tools like profile, settings, etc.</p>
+      <h5 class="card-title">Admin</h5>
+      
     </div>
   </div>
   <!-- 🔘 Logout button -->

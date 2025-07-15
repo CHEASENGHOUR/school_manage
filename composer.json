@@ -1,6 +1,9 @@
 {
     "name": "johnmoew/school_php",
     "version": "1.0.0",
+    "scripts": {
+        "dev": "php -S localhost:8000 -t public"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -9,7 +12,7 @@
     "authors": [
         {
             "name": "CHEASENGHOUR",
-            "email": "ceasenghour789@gmail.com"
+            "email": "cheasenghour789@gmail.com"
         }
     ],
     "require": {}

@@ -12,7 +12,6 @@ class Auth {
         }
         return false;
     }
-
     public static function user() {
         return $_SESSION['user'] ?? null;
     }

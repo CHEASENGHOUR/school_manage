@@ -6,4 +6,11 @@ CREATE TABLE users (
     role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE classes(
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    courses VARCHAR(255) NOT NULL,
+    teacher_id INT,
+    FOREIGN KEY (teacher_id) REFERENCES users(id)
+);
 ```

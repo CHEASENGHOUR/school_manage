@@ -3,8 +3,8 @@ $currentUser = $_SESSION['user'] ?? null;
 $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 ?>
 
-<aside class="sidebar bg-dark text-white" style="width: 250px; min-height: 100vh;">
-    <div class="sidebar-header p-3 d-flex align-items-center h-25">
+<aside class="sidebar bg-dark text-white" style="width: 300px; min-height: 100vh;">
+    <div class="sidebar-header d-flex align-items-center h-25">
         <h4 class="m-0">School System</h4>
     </div>
 
@@ -30,16 +30,16 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
             <!-- Student/Teacher menu items -->
             <li class="">
-                <a class="nav-link <?= str_starts_with($currentPath, '/my-courses') ? 'active' : '' ?>"
-                    href="/my-courses">
-                    <i class="fas fa-graduation-cap me-2"></i> My Courses
+                <a class="nav-link <?= str_starts_with($currentPath, '/class') ? 'active' : '' ?>"
+                    href="/class">
+                    <i class="fas fa-graduation-cap me-2"></i> My Class
                 </a>
             </li>
 
             <!-- Logout -->
-            <li class=" mt-auto">
-                <a class="nav-link text-danger" href="/logout">
-                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+            <li class="px-0 mt-auto text-center">
+                <a class="nav-link bg-danger" href="/logout">
+                    Logout
                 </a>
             </li>
 

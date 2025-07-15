@@ -9,6 +9,7 @@ use App\Controllers\DashboardController;
 use App\Controllers\AdminController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\AdminMiddleware;
+use App\Controllers\ClassController;
 
 // session_start();
 
@@ -29,6 +30,10 @@ $router->post('/register', [$auth, 'register']);
 // Protected routes
 $router->get('/', [$dashboard, 'index'], [new AuthMiddleware()]);
 $router->get('/admin', [$admin, 'index'], [new AdminMiddleware()]);
+
+$router->get("/class",[new ClassController(), "index"]);
+$router->post("/class/create",[new ClassController(), "create"]);
+
 
 // Dispatch router
 $router->dispatch();

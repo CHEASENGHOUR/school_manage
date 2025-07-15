@@ -10,7 +10,7 @@ class AdminMiddleware
     {
         if (!Auth::check() || !Auth::isAdmin()) {
             http_response_code(403);
-            echo "Forbidden: Admins only.";
+            header("Location: /login");
             exit;
         }
     }

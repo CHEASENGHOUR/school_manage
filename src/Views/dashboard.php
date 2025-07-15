@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/layout/header.php'; ?>
 <?php require_once __DIR__ . '/layout/sidebar.php'; ?>
-<div class="d-flex justify-content-between align-items-center">
+<div class="w-100 d-flex justify-content-between align-items-center">
   <h2>Welcome, <?= $_SESSION['user']['email'] ?? 'User' ?> 👋</h2>
 
   <div class="card mt-4">
