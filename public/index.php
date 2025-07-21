@@ -31,8 +31,10 @@ $router->post('/register', [$auth, 'register']);
 $router->get('/', [$dashboard, 'index'], [new AuthMiddleware()]);
 $router->get('/admin', [$admin, 'index'], [new AdminMiddleware()]);
 
-$router->get("/class",[new ClassController(), "index"]);
-$router->post("/class/create",[new ClassController(), "create"]);
+$router->get("/class",[new ClassController(), "index"], [new AuthMiddleware()]);
+$router->post("/class",[new ClassController(), "create"], [new AuthMiddleware()]);
+$router->post("/class/update",[new ClassController(), "update"], [new AuthMiddleware()]);
+$router->post("/class/delete",[new ClassController(), "delete"], [new AuthMiddleware()]);
 
 
 // Dispatch router

@@ -9,11 +9,12 @@ class ClassController{
     public function index(): void
 
     {
+        // var_dump($_SESSION); // Check 'user'
+        // var_dump(Auth::user());
         // Get the authenticated teacher's ID (assuming Auth provides this)
-        // $user = Auth::user();
-        $teacher_id = Auth::user()->id ?? null;
-        
-        // $teacher_id = Auth::user()->id ?? null;
+        $user = Auth::user();
+        $teacher_id = $user['id'] ?? null;
+    
         if ($teacher_id) {
             // Fetch classes for the teacher
             $classesModel = new Classes();
@@ -39,7 +40,7 @@ class ClassController{
     public function create(): void
     {
         $user = Auth::user();
-        $teacher_id = Auth::user()->id ?? null;
+        $teacher_id = $user['id'] ?? null;
         $course = $_POST['courses'] ?? null;
         if (empty($course)) {
             session_start();
@@ -65,6 +66,64 @@ class ClassController{
             $_SESSION['error'] = 'An error occurred: ' . $e->getMessage();
             header("Location: /class");
         }
+        exit;
+    }
+    public function update(): void
+    {
+        $user = Auth::user();
+        // $teacher_id = $user['id'] ?? null;
+        $class_id = $_POST['class_id'] ?? null;
+        $course = $_POST['courses'] ?? null;
+
+        if (empty($class_id) || empty($course)) {
+            session_start();
+            $_SESSION['error'] = 'Class ID and name are required.';
+            header("Location: /class");
+            exit;
+        }
+
+        try {
+            $success = Classes::update($class_id, $course);
+            session_start();
+            if ($success) {
+                $_SESSION['success'] = 'Class updated successfully.';
+            } else {
+                $_SESSION['error'] = 'Failed to update class.';
+            }
+        } catch (\Exception $e) {
+            session_start();
+            $_SESSION['error'] = 'An error occurred: ' . $e->getMessage();
+        }
+
+        header("Location: /class");
+        exit;
+    }
+
+    public function delete(): void
+    {
+        $class_id = $_POST['class_id'] ?? null;
+
+        if (empty($class_id)) {
+            session_start();
+            $_SESSION['error'] = 'Class ID is required.';
+            header("Location: /class");
+            exit;
+        }
+
+        try {
+            $success = Classes::delete($class_id);
+            session_start();
+            if ($success) {
+                $_SESSION['success'] = 'Class deleted successfully.';
+            } else {
+                $_SESSION['error'] = 'Failed to delete class.';
+            }
+        } catch (\Exception $e) {
+            session_start();
+            $_SESSION['error'] = 'An error occurred: ' . $e->getMessage();
+        }
+
+        header("Location: /class");
         exit;
     }
 }

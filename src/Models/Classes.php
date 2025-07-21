@@ -22,4 +22,23 @@ class Classes {
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+    public static function update(int $class_id, string $courses): bool
+    {
+        $conn = Database::connect();
+
+        $stmt = $conn->prepare("UPDATE classes SET courses = ? WHERE class_id = ?");
+        $stmt->bind_param("si", $courses, $class_id);
+
+        return $stmt->execute();
+    }
+
+    public static function delete(int $class_id): bool
+    {
+        $conn = Database::connect();
+
+        $stmt = $conn->prepare("DELETE FROM classes WHERE class_id = ?");
+        $stmt->bind_param("i", $class_id);
+
+        return $stmt->execute();
+    }
 }
