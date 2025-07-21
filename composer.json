@@ -9,11 +9,5 @@
             "App\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "CHEASENGHOUR",
-            "email": "cheasenghour789@gmail.com"
-        }
-    ],
     "require": {}
 }

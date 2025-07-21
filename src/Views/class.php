@@ -29,6 +29,7 @@
                     <th>Class ID</th>
                     <th>Course</th>
                     <th>Teacher ID</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +50,10 @@
                                     Delete
                                 </button>
                             </form>
+                            
+                            <a href="/students" role="button" class="btn btn-sm btn-primary">
+                                Students List
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

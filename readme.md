@@ -13,4 +13,25 @@ CREATE TABLE classes(
     teacher_id INT,
     FOREIGN KEY (teacher_id) REFERENCES users(id)
 );
+
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    class_id INT NOT NULL,
+    FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE
+);
+
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    status ENUM('present', 'absent', 'late') NOT NULL DEFAULT 'absent',
+    date DATE NOT NULL DEFAULT CURRENT_DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE,
+    UNIQUE (student_id, class_id, date)
+);
+
+
 ```

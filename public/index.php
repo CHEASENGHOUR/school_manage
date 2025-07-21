@@ -10,6 +10,7 @@ use App\Controllers\AdminController;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\AdminMiddleware;
 use App\Controllers\ClassController;
+use App\Controllers\StudentsController;
 
 // session_start();
 
@@ -18,6 +19,7 @@ $router = new Router();
 $auth = new AuthController();
 $dashboard = new DashboardController();
 $admin = new AdminController();
+
 
 // Auth routes
 $router->get('/login', [$auth, 'loginView']);
@@ -36,6 +38,7 @@ $router->post("/class",[new ClassController(), "create"], [new AuthMiddleware()]
 $router->post("/class/update",[new ClassController(), "update"], [new AuthMiddleware()]);
 $router->post("/class/delete",[new ClassController(), "delete"], [new AuthMiddleware()]);
 
+$router->get("/students", [new StudentsController(), "index"], [new AuthMiddleware()]);
 
 // Dispatch router
 $router->dispatch();
