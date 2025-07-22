@@ -39,6 +39,7 @@ $router->post("/class/update",[new ClassController(), "update"], [new AuthMiddle
 $router->post("/class/delete",[new ClassController(), "delete"], [new AuthMiddleware()]);
 
 $router->get("/students", [new StudentsController(), "index"], [new AuthMiddleware()]);
+$router->post("/students/create", [new StudentsController(), "create"], [new AuthMiddleware()]);
 
 // Dispatch router
 $router->dispatch();

@@ -59,7 +59,7 @@
 </div>
 <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="/student/create" method="POST">
+    <form action="/students/create" method="POST">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="addStudentModalLabel">Add New Student</h5>
@@ -73,13 +73,19 @@
           </div>
 
           <div class="mb-3">
-            <label for="classId" class="form-label">Class</label>
-            <select class="form-select" id="classId" name="class_id" required>
-              <option value="" selected disabled>Select class</option>
-              <?php foreach ($data['classes'] as $class): ?>
-                <option value="<?= $class['id'] ?>"><?= htmlspecialchars($class['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
+            <label for="studentName" class="form-label">Student Email</label>
+            <input type="email" class="form-control" id="studentName" name="email" required>
+          </div>
+          <div class="mb-3">
+            <p for="studentName" class="form-label">Student Gender</p>
+            <div class=" form-check form-check-inline">
+              <label for="">male</label>
+              <input type="checkbox" name="gender" id="male" value="male" class=" form-check-input">
+            </div>
+            <div class=" form-check form-check-inline">
+              <label for="female">female</label>
+              <input type="checkbox" name="gender" id="female" value="female" class=" form-check-input">
+            </div>
           </div>
         </div>
         

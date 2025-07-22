@@ -33,5 +33,6 @@ CREATE TABLE attendance (
     UNIQUE (student_id, class_id, date)
 );
 
-
+ALTER TABLE students 
+ADD COLUMN gender enum("male", "female") default "male";
 ```

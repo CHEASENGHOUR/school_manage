@@ -41,4 +41,14 @@ class Classes {
 
         return $stmt->execute();
     }
+    public static function findById(int $teacher_id){
+        $conn = Database::connect();
+
+        $stmt = $conn->prepare("SELECT * FROM classes WHERE teacher_id = ? LIMIT 1");
+        $stmt->bind_param("i", $teacher_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        return $result ?: null;
+    }
 }
